@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>monitor-solution</name>
+	<name>monitor-api</name>
 	<description>Twitter Monitor API</description>
 
 	<parent>
