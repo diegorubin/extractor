@@ -1,14 +1,14 @@
-package com.diegorubin.monitor;
+package com.diegorubin.tarzan.worker;
 
-import com.diegorubin.monitor.gateways.TwitterGateway;
+import com.diegorubin.tarzan.worker.monitor.gateways.TwitterGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.diegorubin"})
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.diegorubin.tarzan"})
 public class WorkerApplication implements CommandLineRunner {
 
   @Autowired

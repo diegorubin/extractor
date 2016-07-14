@@ -1,4 +1,4 @@
-package com.diegorubin.monitor.gateways.listeners;
+package com.diegorubin.tarzan.worker.monitor.gateways.listeners;
 
 import twitter4j.StallWarning;
 import twitter4j.Status;

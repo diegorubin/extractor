@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.diegorubin.monitor</groupId>
+  <groupId>com.diegorubin.tarzan.diegorubin.monitor</groupId>
   <artifactId>monitor-solution</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -46,6 +46,7 @@
       <artifactId>spring-cloud-netflix-core</artifactId>
       <version>1.1.4.RELEASE</version>
     </dependency>
+
   </dependencies>
 
   <build>
