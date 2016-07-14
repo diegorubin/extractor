@@ -6,6 +6,8 @@ import com.netflix.config.DynamicStringProperty;
 import org.springframework.stereotype.Component;
 import twitter4j.*;
 
+import java.util.Optional;
+
 /**
  * Twitter Gateway
  *
@@ -13,11 +15,14 @@ import twitter4j.*;
  */
 @Component
 public class TwitterGateway {
-  DynamicStringProperty filter = DynamicPropertyFactory
+
+  private TwitterStream twitterStream;
+  private StatusListener listener;
+  private DynamicStringProperty filter = DynamicPropertyFactory
       .getInstance().getStringProperty("monitor.twitter.filter", "netshoes", new Runnable() {
         @Override
         public void run() {
-          track(filter.get());
+          Optional.ofNullable(twitterStream).ifPresent(t -> track(filter.get()));
         }
       });
 
@@ -27,10 +32,11 @@ public class TwitterGateway {
 
 
   private void track(String filter) {
-    System.out.println("\nnew filter");
+    Optional.ofNullable(twitterStream).ifPresent(stream -> stream.removeListener(listener));
 
-    StatusListener listener = new SimpleListener();
-    TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
+    listener = new SimpleListener();
+    twitterStream = new TwitterStreamFactory().getInstance();
+
     twitterStream.addListener(listener);
 
     FilterQuery filterQuery = new FilterQuery();
