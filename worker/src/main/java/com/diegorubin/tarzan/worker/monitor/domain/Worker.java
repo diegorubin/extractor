@@ -10,6 +10,7 @@ import com.netflix.config.DynamicPropertyFactory;
  */
 public class Worker {
 
+
   private String filter = DynamicPropertyFactory.getInstance().getStringProperty("monitor.filter", "netshoes").get();
   private WorkerType type = WorkerType.valueOf(DynamicPropertyFactory.getInstance()
       .getStringProperty("monitor.type", "TWITTER").get());

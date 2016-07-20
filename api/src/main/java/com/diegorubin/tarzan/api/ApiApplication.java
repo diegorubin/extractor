@@ -1,4 +1,4 @@
-package com.diegorubin.tarzan.worker.monitor;
+package com.diegorubin.tarzan.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
