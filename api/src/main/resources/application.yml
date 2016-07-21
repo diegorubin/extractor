@@ -1,0 +1,8 @@
+monitor:
+  default:
+    type: TWITTER
+    filter: netshoes
+
+server:
+  port: 8081
+

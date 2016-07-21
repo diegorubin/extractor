@@ -14,7 +14,6 @@ public class WorkerApplication implements CommandLineRunner {
   @Autowired
   private TwitterGateway twitterGateway;
 
-
   public static void main(String[] args) {
     SpringApplication.run(WorkerApplication.class, args);
   }
