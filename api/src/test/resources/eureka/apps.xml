@@ -1,0 +1,74 @@
+<applications>
+  <versions__delta>1</versions__delta>
+  <apps__hashcode>UP_1_</apps__hashcode>
+  <application>
+    <name>WORKER</name>
+    <instance>
+      <instanceId>cit012076.cit:worker:8082</instanceId>
+      <hostName>localhost</hostName>
+      <app>WORKER</app>
+      <ipAddr>172.16.57.146</ipAddr>
+      <status>UP</status>
+      <overriddenstatus>UNKNOWN</overriddenstatus>
+      <port enabled="true">8082</port>
+      <securePort enabled="false">443</securePort>
+      <countryId>1</countryId>
+      <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
+        <name>MyOwn</name>
+      </dataCenterInfo>
+      <leaseInfo>
+        <renewalIntervalInSecs>30</renewalIntervalInSecs>
+        <durationInSecs>90</durationInSecs>
+        <registrationTimestamp>1469107074036</registrationTimestamp>
+        <lastRenewalTimestamp>1469114650821</lastRenewalTimestamp>
+        <evictionTimestamp>0</evictionTimestamp>
+        <serviceUpTimestamp>1469107074036</serviceUpTimestamp>
+      </leaseInfo>
+      <metadata class="java.util.Collections$EmptyMap"/>
+      <homePageUrl>http://localhost:8082/</homePageUrl>
+      <statusPageUrl>http://localhost:8082/info</statusPageUrl>
+      <healthCheckUrl>http://localhost:8082/health</healthCheckUrl>
+      <vipAddress>worker</vipAddress>
+      <secureVipAddress>worker</secureVipAddress>
+      <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
+      <lastUpdatedTimestamp>1469107074037</lastUpdatedTimestamp>
+      <lastDirtyTimestamp>1469107073774</lastDirtyTimestamp>
+      <actionType>ADDED</actionType>
+    </instance>
+  </application>
+  <application>
+    <name>WORKER</name>
+    <instance>
+      <instanceId>cit012076.cit:worker:8082</instanceId>
+      <hostName>localhost</hostName>
+      <app>WORKER</app>
+      <ipAddr>172.16.57.146</ipAddr>
+      <status>UP</status>
+      <overriddenstatus>UNKNOWN</overriddenstatus>
+      <port enabled="true">8082</port>
+      <securePort enabled="false">443</securePort>
+      <countryId>1</countryId>
+      <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
+        <name>MyOwn</name>
+      </dataCenterInfo>
+      <leaseInfo>
+        <renewalIntervalInSecs>30</renewalIntervalInSecs>
+        <durationInSecs>90</durationInSecs>
+        <registrationTimestamp>1469107074036</registrationTimestamp>
+        <lastRenewalTimestamp>1469114650821</lastRenewalTimestamp>
+        <evictionTimestamp>0</evictionTimestamp>
+        <serviceUpTimestamp>1469107074036</serviceUpTimestamp>
+      </leaseInfo>
+      <metadata class="java.util.Collections$EmptyMap"/>
+      <homePageUrl>http://localhost:8082/</homePageUrl>
+      <statusPageUrl>http://localhost:8082/info</statusPageUrl>
+      <healthCheckUrl>http://localhost:8082/health</healthCheckUrl>
+      <vipAddress>worker</vipAddress>
+      <secureVipAddress>worker</secureVipAddress>
+      <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
+      <lastUpdatedTimestamp>1469107074037</lastUpdatedTimestamp>
+      <lastDirtyTimestamp>1469107073774</lastDirtyTimestamp>
+      <actionType>ADDED</actionType>
+    </instance>
+  </application>
+</applications>

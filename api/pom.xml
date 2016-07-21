@@ -53,18 +53,46 @@
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>mockwebserver</artifactId>
+      <version>3.3.1</version>
+    </dependency>
+
+    <!-- Feign -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-feign</artifactId>
+      <version>1.1.4.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.netflix.feign</groupId>
+      <artifactId>feign-jackson</artifactId>
+      <version>8.15.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.netflix.feign</groupId>
+      <artifactId>feign-jackson-jaxb</artifactId>
+      <version>8.15.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.netflix.feign</groupId>
+      <artifactId>feign-jaxb</artifactId>
+      <version>8.15.1</version>
+    </dependency>
+
+
+    <!-- Feign Client-->
+    <dependency>
+      <groupId>com.netflix.feign</groupId>
+      <artifactId>feign-httpclient</artifactId>
+      <version>8.15.1</version>
     </dependency>
 
   </dependencies>
