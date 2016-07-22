@@ -6,3 +6,10 @@ monitor:
 server:
   port: 8081
 
+ribbon:
+  eureka:
+    enabled: false
+
+eureka:
+  ribbon:
+    listOfServers: http://localhost:8761

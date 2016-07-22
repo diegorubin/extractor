@@ -1,6 +1,7 @@
 package com.diegorubin.tarzan.api.workers.gateways.client;
 
 import com.diegorubin.tarzan.api.workers.domain.Applications;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
@@ -11,8 +12,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  *
  * @author diegorubin
  */
+@FeignClient("eureka")
 public interface EurekaAppsClient {
 
-    @RequestMapping(method = GET, value = "/eureka/apps", consumes = APPLICATION_XML_VALUE)
-    Applications get();
+  @RequestMapping(method = GET, value = "/eureka/apps", consumes = APPLICATION_XML_VALUE)
+  Applications get();
 }
