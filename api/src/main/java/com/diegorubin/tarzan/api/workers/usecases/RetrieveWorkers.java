@@ -33,10 +33,11 @@ public class RetrieveWorkers {
 
     applications.forEach(application -> commands.add(getFuture(application)));
 
-    return commands
+    List<Worker> workers = commands
         .stream()
         .map(this::waitForWorker)
         .collect(Collectors.toList());
+    return workers.stream().filter(w -> w != null).collect(Collectors.toList());
   }
 
   private Future<Worker> getFuture(Application application) {

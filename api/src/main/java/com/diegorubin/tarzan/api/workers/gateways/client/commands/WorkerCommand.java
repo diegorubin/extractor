@@ -44,7 +44,7 @@ public class WorkerCommand extends HystrixCommand<Worker> {
 
   @Override
   public Worker getFallback() {
-    return new Worker();
+    return null;
   }
 
   private WorkerClient buildClient() {
