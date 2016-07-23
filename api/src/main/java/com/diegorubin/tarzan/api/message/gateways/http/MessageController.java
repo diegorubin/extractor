@@ -20,7 +20,7 @@ public class MessageController {
   private MessageCrud messageCrud;
 
   @RequestMapping(method = RequestMethod.GET)
-  public List<Message> getMessages(@RequestParam("worker") String worker) {
+  public List<Message> getMessages(@RequestParam(value = "worker", required = false) String worker) {
     return messageCrud.findAll(worker);
   }
 
