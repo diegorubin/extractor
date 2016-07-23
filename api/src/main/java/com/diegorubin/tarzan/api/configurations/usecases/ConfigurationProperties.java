@@ -44,9 +44,10 @@ public class ConfigurationProperties {
       Configuration configuration = configurationGateway.findByWorkerName(worker);
       if (configuration != null) {
         properties.put(worker, configuration.getConfigs());
+      } else {
+        configuration = initDefaultWorker(worker);
+        properties.put(worker, configuration.getConfigs());
       }
-      configuration = initDefaultWorker(worker);
-      properties.put(worker, configuration.getConfigs());
     }
   }
 
@@ -55,8 +56,8 @@ public class ConfigurationProperties {
     configuration.setWorkerName(worker);
 
     Map<String, String> configs = new HashMap<>();
-    configs.put("monitor.type", environment.getProperty("monitor.default.type"));
-    configs.put("monitor.filter", environment.getProperty("monitor.default.filter"));
+    configs.put("type", environment.getProperty("monitor.default.type"));
+    configs.put("filter", environment.getProperty("monitor.default.filter"));
     configuration.setConfigs(configs);
 
     return configuration;
