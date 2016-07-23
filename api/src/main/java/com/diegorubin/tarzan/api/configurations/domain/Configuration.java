@@ -18,6 +18,14 @@ public class Configuration {
 
   private String workerName;
   private Map<String, String> configs;
+  
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public String getWorkerName() {
     return workerName;

@@ -28,7 +28,10 @@ public class ConfigurationProperties {
   private Map<String, Map<String, String>> properties = new HashMap<>();
 
   public void update(Configuration configuration) {
+    Configuration oldConfiguration = configurationGateway.findByWorkerName(configuration.getWorkerName());
+    Optional.ofNullable(oldConfiguration).ifPresent(c -> configuration.setId(c.getId()));
     properties.put(configuration.getWorkerName(), configuration.getConfigs());
+    configurationGateway.save(configuration);
   }
 
   public void forEach(String worker, BiConsumer<String, String> consumer) {
@@ -42,15 +45,21 @@ public class ConfigurationProperties {
       if (configuration != null) {
         properties.put(worker, configuration.getConfigs());
       }
-      properties.put(worker, initDefaultWorker());
+      configuration = initDefaultWorker(worker);
+      properties.put(worker, configuration.getConfigs());
     }
   }
 
-  private Map<String, String> initDefaultWorker() {
-    Map<String,String> configs = new HashMap<>();
+  private Configuration initDefaultWorker(String worker) {
+    Configuration configuration = new Configuration();
+    configuration.setWorkerName(worker);
+
+    Map<String, String> configs = new HashMap<>();
     configs.put("monitor.type", environment.getProperty("monitor.default.type"));
     configs.put("monitor.filter", environment.getProperty("monitor.default.filter"));
-    return configs;
+    configuration.setConfigs(configs);
+
+    return configuration;
   }
 
 }
