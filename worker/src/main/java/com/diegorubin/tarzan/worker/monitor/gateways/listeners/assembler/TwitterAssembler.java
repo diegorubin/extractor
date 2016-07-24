@@ -16,6 +16,7 @@ public class TwitterAssembler {
     Message message = new Message();
     message.setAuthor(status.getUser().getScreenName());
     message.setContent(status.getText());
+    message.setSource("TWITTER");
 
     return message;
   }

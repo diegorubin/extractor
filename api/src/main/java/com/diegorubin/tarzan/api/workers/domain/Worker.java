@@ -10,6 +10,15 @@ public class Worker {
   private String name;
   private String type;
   private String filter;
+  private String address;
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
   public String getName() {
     return name;

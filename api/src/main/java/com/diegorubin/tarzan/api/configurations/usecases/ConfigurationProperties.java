@@ -27,6 +27,11 @@ public class ConfigurationProperties {
 
   private Map<String, Map<String, String>> properties = new HashMap<>();
 
+  public Map<String, String> get(String worker) {
+    normalize(worker);
+    return properties.get(worker);
+  }
+
   public void update(Configuration configuration) {
     Configuration oldConfiguration = configurationGateway.findByWorkerName(configuration.getWorkerName());
     Optional.ofNullable(oldConfiguration).ifPresent(c -> configuration.setId(c.getId()));

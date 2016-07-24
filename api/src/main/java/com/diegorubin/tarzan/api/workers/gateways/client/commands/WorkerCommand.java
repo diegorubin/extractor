@@ -38,6 +38,7 @@ public class WorkerCommand extends HystrixCommand<Worker> {
   protected Worker run() throws Exception {
     Worker worker = workerClient.get();
     worker.setName(name);
+    worker.setAddress(address);
 
     return worker;
   }

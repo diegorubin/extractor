@@ -16,9 +16,12 @@ public class ProcessMessage {
   @Autowired
   private CounterService counterService;
 
+  @Autowired
+  private SaveMessage saveMessage;
+
   public void execute(final Message message) {
     counterService.increment("worker.processed_messages.count");
-    System.out.println(message.toString());
+    saveMessage.execute(message);
   }
 
 }

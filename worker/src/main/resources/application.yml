@@ -3,6 +3,9 @@ spring:
     name: worker
 server:
   port: 8082
+ribbon:
+  eureka:
+    enabled: false
 eureka:
   instance:
     hostname: localhost

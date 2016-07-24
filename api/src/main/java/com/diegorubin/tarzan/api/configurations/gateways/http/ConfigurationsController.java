@@ -6,6 +6,11 @@ import com.diegorubin.tarzan.api.configurations.usecases.ConfigurationProperties
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.TEXT_PLAIN_VALUE;
+
 /**
  * Worker Controller
  *
@@ -24,9 +29,14 @@ public class ConfigurationsController {
     return renderProperties(configuration.getWorkerName());
   }
 
-  @RequestMapping(value = "/{workerName}", method = RequestMethod.GET, produces = "text/plain")
+  @RequestMapping(value = "/{workerName}", method = RequestMethod.GET, produces = TEXT_PLAIN_VALUE)
   public String getProperties(@PathVariable("workerName") String workerName) {
     return renderProperties(workerName);
+  }
+
+  @RequestMapping(value = "/{workerName}.json", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
+  public Map<String, String> getPropertiesAsJSON(@PathVariable("workerName") String workerName) {
+    return configurations.get(workerName);
   }
 
   private String renderProperties(String workerName) {
