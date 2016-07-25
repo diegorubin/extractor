@@ -1,5 +1,7 @@
 package com.diegorubin.tarzan.worker.nlp.domain;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,9 +14,21 @@ public class Message {
   private String source;
   private String content;
   private String author;
-  private String worker;
 
-  private List<String> actions;
+  private String worker;
+  private List<String> actions = new ArrayList<>();
+
+  public String getSource() {
+    return source;
+  }
+
+  public String getWorker() {
+    return worker;
+  }
+
+  public List<String> getActions() {
+    return actions;
+  }
 
   public String getContent() {
     return content;

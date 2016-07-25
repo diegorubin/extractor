@@ -3,6 +3,7 @@ package com.diegorubin.tarzan.api.message.domain;
 import com.diegorubin.tarzan.api.message.domain.enums.Source;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Message {
   private String content;
   private String author;
   private String worker;
+  private LocalDateTime receivedIn;
 
   private List<String> actions;
 
@@ -62,4 +64,11 @@ public class Message {
     this.actions = actions;
   }
 
+  public LocalDateTime getReceivedIn() {
+    return receivedIn;
+  }
+
+  public void setReceivedIn(LocalDateTime receivedIn) {
+    this.receivedIn = receivedIn;
+  }
 }

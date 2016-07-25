@@ -5,7 +5,7 @@ server:
   port: 8082
 ribbon:
   eureka:
-    enabled: false
+    enabled: true
 eureka:
   instance:
     hostname: localhost

@@ -5,6 +5,7 @@ import com.diegorubin.tarzan.api.message.gateways.MessageGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,7 @@ public class MessageCrud {
   }
 
   public Message create(Message message) {
+    message.setReceivedIn(LocalDateTime.now());
     return messageGateway.create(message);
   }
 
