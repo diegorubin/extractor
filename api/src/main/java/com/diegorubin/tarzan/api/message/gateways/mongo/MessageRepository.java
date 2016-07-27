@@ -12,6 +12,7 @@ import java.util.List;
  */
 interface MessageRepository extends MongoRepository<Message, String> {
 
-  List<Message> findByWorker(String worker);
+  List<Message> findByWorkerOrderByReceivedInDesc(String worker);
+  Long countByWorker(String worker);
 
 }

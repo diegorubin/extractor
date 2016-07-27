@@ -25,7 +25,7 @@ public interface MessageGateway {
    *
    * @return list of messages by worker
    */
-  List<Message> findByWorkers(String worker);
+  List<Message> findByWorker(String worker);
 
   /**
    * Create message
@@ -37,7 +37,11 @@ public interface MessageGateway {
   Message create(Message message);
 
   /**
-   * Delete message
+   * Count received messages for worker
+   *
+   * @param worker the worker name
+   *
+   * @return number of messages imported by worker
    */
-
+  Long countByWorker(String worker);
 }

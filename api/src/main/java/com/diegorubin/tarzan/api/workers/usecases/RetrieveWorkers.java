@@ -1,5 +1,6 @@
 package com.diegorubin.tarzan.api.workers.usecases;
 
+import com.diegorubin.tarzan.api.message.gateways.MessageGateway;
 import com.diegorubin.tarzan.api.workers.domain.Application;
 import com.diegorubin.tarzan.api.workers.domain.Worker;
 import com.diegorubin.tarzan.api.workers.gateways.client.EurekaAppsClient;
@@ -26,6 +27,9 @@ public class RetrieveWorkers {
 
   @Autowired
   private EurekaAppsClient client;
+
+  @Autowired
+  private MessageGateway messageGateway;
 
   public List<Worker> retrieve() {
     final List<Future<Worker>> commands = new ArrayList<>();
@@ -54,7 +58,7 @@ public class RetrieveWorkers {
       target.append(":").append(application.getInstance().getPort().getValue());
     }
 
-    WorkerCommand workerCommand = new WorkerCommand(application.getName(), target.toString());
+    WorkerCommand workerCommand = new WorkerCommand(application.getName(), target.toString(), messageGateway);
     return workerCommand.queue();
   }
 

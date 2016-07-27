@@ -22,7 +22,7 @@ public class MessageCrud {
 
   public List<Message> findAll(String worker) {
     if (Optional.ofNullable(worker).isPresent()) {
-      return messageGateway.findByWorkers(worker);
+      return messageGateway.findByWorker(worker);
     }
     return messageGateway.findAll();
   }

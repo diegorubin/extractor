@@ -24,12 +24,17 @@ public class MessageGatewayImpl implements MessageGateway {
   }
 
   @Override
-  public List<Message> findByWorkers(final String worker) {
-    return messageRepository.findByWorker(worker);
+  public List<Message> findByWorker(final String worker) {
+    return messageRepository.findByWorkerOrderByReceivedInDesc(worker);
   }
 
   @Override
   public Message create(Message message) {
     return messageRepository.save(message);
+  }
+
+  @Override
+  public Long countByWorker(String worker) {
+    return messageRepository.countByWorker(worker);
   }
 }

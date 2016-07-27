@@ -1,5 +1,6 @@
 package com.diegorubin.tarzan.api.workers.gateways.client.commands;
 
+import com.diegorubin.tarzan.api.message.gateways.MessageGateway;
 import com.diegorubin.tarzan.api.workers.domain.Worker;
 import com.diegorubin.tarzan.api.workers.gateways.client.WorkerClient;
 import com.netflix.hystrix.HystrixCommand;
@@ -19,18 +20,20 @@ public class WorkerCommand extends HystrixCommand<Worker> {
   private String address;
   private String name;
   private WorkerClient workerClient;
+  private MessageGateway messageGateway;
 
   /**
    * Creates a new Worker Command
    *
    * @param address the store address
    */
-  public WorkerCommand(final String name, final String address) {
+  public WorkerCommand(final String name, final String address, final MessageGateway messageGateway) {
     super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(name))
         .andCommandKey(HystrixCommandKey.Factory.asKey(address)));
 
     this.address = address;
     this.name = name;
+    this.messageGateway = messageGateway;
     this.workerClient = buildClient();
   }
 
@@ -39,6 +42,7 @@ public class WorkerCommand extends HystrixCommand<Worker> {
     Worker worker = workerClient.get();
     worker.setName(name);
     worker.setAddress(address);
+    worker.setMessages(messageGateway.countByWorker(name.toLowerCase()));
 
     return worker;
   }

@@ -10,6 +10,7 @@ import com.netflix.config.DynamicPropertyFactory;
  */
 public class Worker {
 
+  private WorkerStatus workerStatus;
 
   private String filter = DynamicPropertyFactory.getInstance().getStringProperty("monitor.filter", "netshoes").get();
   private WorkerType type = WorkerType.valueOf(DynamicPropertyFactory.getInstance()
@@ -23,4 +24,11 @@ public class Worker {
     return type;
   }
 
+  public void setStatus(WorkerStatus workerStatus) {
+    this.workerStatus = workerStatus;
+  }
+
+  public WorkerStatus getStatus() {
+    return workerStatus;
+  }
 }
