@@ -1,17 +1,21 @@
 spring:
   application:
     name: worker
+
 server:
   port: 8082
+
 ribbon:
   eureka:
     enabled: true
+
 eureka:
   instance:
     hostname: localhost
   client:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
 archaius:
   config: http://localhost:8081/configurations/${spring.application.name}
 
