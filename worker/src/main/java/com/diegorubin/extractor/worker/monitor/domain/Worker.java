@@ -15,6 +15,9 @@ public class Worker {
   private String filter = DynamicPropertyFactory.getInstance().getStringProperty("monitor.filter", "netshoes").get();
   private WorkerType type = WorkerType.valueOf(DynamicPropertyFactory.getInstance()
       .getStringProperty("monitor.type", "TWITTER").get());
+  private String treatmentCode = DynamicPropertyFactory.getInstance()
+      .getStringProperty("monitor.treatmentCode", "").get();
+
 
   public String getFilter() {
     return filter;
@@ -30,5 +33,9 @@ public class Worker {
 
   public WorkerStatus getStatus() {
     return workerStatus;
+  }
+
+  public String getTreatmentCode() {
+    return treatmentCode;
   }
 }

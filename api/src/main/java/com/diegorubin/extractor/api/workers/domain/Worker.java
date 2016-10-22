@@ -10,6 +10,7 @@ public class Worker {
   private String name;
   private String type;
   private String filter;
+  private String treatmentCode;
   private String address;
   private Long messages;
   private WorkerStatus workerStatus;

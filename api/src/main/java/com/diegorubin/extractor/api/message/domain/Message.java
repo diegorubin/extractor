@@ -4,6 +4,7 @@ import com.diegorubin.extractor.api.message.domain.enums.Source;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class Message {
 
   private Boolean inTrain;
 
-  private List<String> actions;
+  private List<String> actions = new ArrayList<>();
   private Map<String, String> categories;
 
   public Source getSource() {
@@ -90,5 +91,9 @@ public class Message {
 
   public Boolean getInTrain() {
     return inTrain;
+  }
+
+  public void addAction(String action) {
+    actions.add(action);
   }
 }
