@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Message entity
@@ -22,7 +23,10 @@ public class Message {
   private String worker;
   private LocalDateTime receivedIn;
 
+  private Boolean inTrain;
+
   private List<String> actions;
+  private Map<String, String> categories;
 
   public Source getSource() {
     return source;
@@ -38,6 +42,14 @@ public class Message {
 
   public void setContent(String content) {
     this.content = content;
+  }
+
+  public void setCategories(Map<String, String> categories) {
+    this.categories = categories;
+  }
+
+  public Map<String, String> getCategories() {
+    return categories;
   }
 
   public String getAuthor() {
@@ -70,5 +82,13 @@ public class Message {
 
   public void setReceivedIn(LocalDateTime receivedIn) {
     this.receivedIn = receivedIn;
+  }
+
+  public void setInTrain(Boolean inTrain) {
+    this.inTrain = inTrain;
+  }
+
+  public Boolean getInTrain() {
+    return inTrain;
   }
 }

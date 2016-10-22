@@ -25,4 +25,8 @@ public class SampleCrud {
   public Sample create(Sample sample) {
     return sampleGateway.create(sample);
   }
+
+  public Long countByMessage(String message) {
+    return sampleGateway.countByMessage(message);
+  }
 }

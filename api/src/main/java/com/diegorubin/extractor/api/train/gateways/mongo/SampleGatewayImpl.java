@@ -32,4 +32,9 @@ public class SampleGatewayImpl implements SampleGateway {
   public Sample create(Sample sample) {
     return sampleRepository.save(sample);
   }
+
+  @Override
+  public Long countByMessage(String message) {
+    return sampleRepository.countByMessage(message);
+  }
 }

@@ -13,5 +13,6 @@ import java.util.List;
 public interface SampleRepository extends MongoRepository<Sample, String> {
 
   List<Sample> findByTrainingName(String trainingName);
+  Long countByMessage(String message);
 
 }

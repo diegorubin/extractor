@@ -34,4 +34,6 @@ public interface SampleGateway {
    */
   Sample create(Sample sample);
 
+  Long countByMessage(String message);
+
 }
