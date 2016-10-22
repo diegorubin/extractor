@@ -1,5 +1,6 @@
 package com.diegorubin.extractor.api.train.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -12,8 +13,13 @@ public class Sample {
 
   private String id;
 
+  @JsonProperty("training_name")
   private String trainingName;
+
+  @JsonProperty("message")
   private String message;
+
+  @JsonProperty("category")
   private String category;
 
   private String getTrainingName() {
@@ -32,11 +38,11 @@ public class Sample {
     this.trainingName = trainingName;
   }
 
-  private void getMessage(String message) {
+  private void setMessage(String message) {
     this.message = message;
   }
 
-  private void getCategory(String category) {
+  private void setCategory(String category) {
     this.category = category;
   }
 }

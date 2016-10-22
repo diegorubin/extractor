@@ -2,6 +2,7 @@ package com.diegorubin.extractor.api.train.gateways.mongo;
 
 import com.diegorubin.extractor.api.train.domain.Sample;
 import com.diegorubin.extractor.api.train.gateways.SampleGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,18 +15,21 @@ import java.util.List;
 @Component
 public class SampleGatewayImpl implements SampleGateway {
 
+  @Autowired
+  private SampleRepository sampleRepository;
+
   @Override
   public List<Sample> findAll() {
-    return null;
+    return sampleRepository.findAll();
   }
 
   @Override
   public List<Sample> findByTrainingName(String trainingName) {
-    return null;
+    return sampleRepository.findByTrainingName(trainingName);
   }
 
   @Override
   public Sample create(Sample sample) {
-    return null;
+    return sampleRepository.save(sample);
   }
 }
