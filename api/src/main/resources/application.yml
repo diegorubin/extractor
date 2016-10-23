@@ -17,6 +17,11 @@ spring:
 ribbon:
   eureka:
     enabled: false
+train:
+  ribbon:
+    ConnectTimeout: 10000
+    ReadTimeout: 10000
+    listOfServers: http://localhost:5000
 eureka:
   ribbon:
     listOfServers: http://localhost:8761

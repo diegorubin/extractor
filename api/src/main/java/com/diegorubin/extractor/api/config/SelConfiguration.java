@@ -1,7 +1,7 @@
 package com.diegorubin.extractor.api.config;
 
-import lang.sel.core.EngineContext;
-import lang.sel.springboot.EngineLoader;
+import lang.sel.core.SelContext;
+import lang.sel.springboot.SelLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,11 +14,11 @@ import org.springframework.context.annotation.Configuration;
 public class SelConfiguration {
 
   @Bean
-  public EngineContext engineContext() {
-    EngineLoader engineLoader = new EngineLoader();
-    EngineContext engineContext = new EngineContext();
-    engineLoader.load(engineContext, "com.diegorubin.extractor");
-    return engineContext;
+  public SelContext selContext() {
+    SelLoader selLoader = new SelLoader();
+    SelContext selContext = new SelContext();
+    selLoader.load(selContext, "com.diegorubin.extractor");
+    return selContext;
   }
 
 }

@@ -1,8 +1,14 @@
 package com.diegorubin.extractor.api.message.usecases;
 
+import com.diegorubin.extractor.api.configurations.domain.Configuration;
+import com.diegorubin.extractor.api.configurations.gateways.ConfigurationGateway;
 import com.diegorubin.extractor.api.message.domain.Message;
 import com.diegorubin.extractor.api.message.gateways.MessageGateway;
+import com.diegorubin.extractor.api.sel.ExtractorExecutionData;
+import com.diegorubin.extractor.api.train.gateways.client.TrainClient;
 import com.diegorubin.extractor.api.train.usecases.MessageIsSampleTrain;
+import lang.sel.core.SelContext;
+import lang.sel.core.SelParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +28,16 @@ public class MessageCrud {
   private MessageGateway messageGateway;
 
   @Autowired
+  private ConfigurationGateway configurationGateway;
+
+  @Autowired
   private MessageIsSampleTrain messageIsSampleTrain;
+
+  @Autowired
+  private SelContext selContext;
+
+  @Autowired
+  private TrainClient trainClient;
 
   public List<Message> findAll(String worker) {
     List<Message> messages;
@@ -36,6 +51,14 @@ public class MessageCrud {
 
   public Message create(Message message) {
     message.setReceivedIn(LocalDateTime.now());
+    Configuration configuration = configurationGateway.findByWorkerName(message.getWorker());
+    String code = configuration.getConfigs().getOrDefault("treatmentCode", "").replace("\r", " ");
+
+    ExtractorExecutionData executionData = new ExtractorExecutionData(message);
+    executionData.setTrainClient(trainClient);
+    SelParser parser = new SelParser(code, selContext, executionData);
+    parser.evaluate();
+
     return messageGateway.create(message);
   }
 

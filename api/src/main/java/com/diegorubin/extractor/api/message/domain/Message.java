@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class Message {
   private Boolean inTrain;
 
   private List<String> actions = new ArrayList<>();
-  private Map<String, String> categories;
+  private Map<String, String> categories = new HashMap<>();
 
   public Source getSource() {
     return source;
@@ -96,4 +97,9 @@ public class Message {
   public void addAction(String action) {
     actions.add(action);
   }
+
+  public void addCategory(String category, String value) {
+    categories.put(category, value);
+  }
+
 }

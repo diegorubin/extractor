@@ -43,7 +43,9 @@ public class ConfigurationsController {
     final StringBuilder stringBuilder = new StringBuilder();
     configurations
         .forEach(workerName,
-            (name, value) -> stringBuilder.append("monitor.").append(name).append(":").append(" ").append(value)
+            (name, value) -> stringBuilder.append("monitor.").append(name).append(":")
+                .append(" ")
+                .append(value.replace("\r", "").replace("\n", "\\\n"))
                 .append("\n"));
     return stringBuilder.toString();
   }
