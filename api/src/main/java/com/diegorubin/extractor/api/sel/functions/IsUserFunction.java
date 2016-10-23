@@ -2,7 +2,10 @@ package com.diegorubin.extractor.api.sel.functions;
 
 import com.diegorubin.extractor.api.message.domain.Message;
 import com.diegorubin.extractor.api.sel.ExtractorExecutionData;
+import com.diegorubin.extractor.api.train.gateways.client.ClassifyClient;
+import com.diegorubin.extractor.api.train.gateways.client.ClassifyResponse;
 import lang.sel.annotations.Function;
+import lang.sel.commons.results.BooleanResult;
 import lang.sel.interfaces.AbstractFunction;
 import lang.sel.interfaces.OperationResult;
 import lang.sel.interfaces.OperatorArgument;
@@ -19,13 +22,13 @@ public class IsUserFunction extends AbstractFunction {
     Message message = ((ExtractorExecutionData) executionData).getMessage();
     message.addAction("userCheck");
 
-    CrawlerResponse response = new LanguageResponse();
+    ClassifyResponse response = new ClassifyResponse();
     response.setContent(message.getContent());
-    TrainClient trainClient = ((ExtractorExecutionData) executionData).getClassifyClient();
-    response = trainClient.lang(response);
+    ClassifyClient trainClient = ((ExtractorExecutionData) executionData).getClassifyClient();
+    response = trainClient.classify("crawler", response);
 
-    message.addCategory("lang", response.getLang());
-    return new BooleanResult();
+    message.addCategory("origin", response.getClassification());
+    return new BooleanResult(response.getClassification().equals("user"));
   }
 
 }
