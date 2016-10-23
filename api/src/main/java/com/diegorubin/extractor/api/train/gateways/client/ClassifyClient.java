@@ -13,7 +13,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * @author diegorubin
  */
 @FeignClient("train")
-public interface TrainClient {
+public interface ClassifyClient {
 
   @RequestMapping(method = POST, value = "/lang", consumes = APPLICATION_JSON_VALUE)
   LanguageResponse lang(@RequestBody LanguageResponse languageResponse);

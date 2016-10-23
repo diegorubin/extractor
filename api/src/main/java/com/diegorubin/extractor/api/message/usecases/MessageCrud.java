@@ -5,7 +5,7 @@ import com.diegorubin.extractor.api.configurations.gateways.ConfigurationGateway
 import com.diegorubin.extractor.api.message.domain.Message;
 import com.diegorubin.extractor.api.message.gateways.MessageGateway;
 import com.diegorubin.extractor.api.sel.ExtractorExecutionData;
-import com.diegorubin.extractor.api.train.gateways.client.TrainClient;
+import com.diegorubin.extractor.api.train.gateways.client.ClassifyClient;
 import com.diegorubin.extractor.api.train.usecases.MessageIsSampleTrain;
 import lang.sel.core.SelContext;
 import lang.sel.core.SelParser;
@@ -37,7 +37,7 @@ public class MessageCrud {
   private SelContext selContext;
 
   @Autowired
-  private TrainClient trainClient;
+  private ClassifyClient classifyClient;
 
   public List<Message> findAll(String worker) {
     List<Message> messages;
@@ -55,7 +55,7 @@ public class MessageCrud {
     String code = configuration.getConfigs().getOrDefault("treatmentCode", "").replace("\r", " ");
 
     ExtractorExecutionData executionData = new ExtractorExecutionData(message);
-    executionData.setTrainClient(trainClient);
+    executionData.setClassifyClient(classifyClient);
     SelParser parser = new SelParser(code, selContext, executionData);
     parser.evaluate();
 
