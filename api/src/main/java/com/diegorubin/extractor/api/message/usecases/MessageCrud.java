@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
@@ -25,6 +26,8 @@ import java.util.stream.Collectors;
  */
 @Component
 public class MessageCrud {
+
+  private static final Logger LOGGER = Logger.getLogger( MessageCrud.class.getName() );
 
   @Autowired
   private MessageGateway messageGateway;
@@ -60,7 +63,10 @@ public class MessageCrud {
   public Message create(Message message) {
     message.setReceivedIn(LocalDateTime.now());
     Configuration configuration = configurationGateway.findByWorkerName(message.getWorker());
+    LOGGER.info("[Message Configuration] " + configuration.toString());
     String code = configuration.getConfigs().getOrDefault("treatmentCode", "TRUE").replace("\r", " ");
+
+    LOGGER.info("[Treatment Code] " + code);
 
     ExtractorExecutionData executionData = new ExtractorExecutionData(message);
     executionData.setClassifyClient(classifyClient);
