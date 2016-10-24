@@ -7,6 +7,7 @@ import com.diegorubin.extractor.api.message.gateways.MessageGateway;
 import com.diegorubin.extractor.api.sel.ExtractorExecutionData;
 import com.diegorubin.extractor.api.train.gateways.client.ClassifyClient;
 import com.diegorubin.extractor.api.train.usecases.MessageIsSampleTrain;
+import lang.sel.commons.results.BooleanResult;
 import lang.sel.core.SelContext;
 import lang.sel.core.SelParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,14 +60,17 @@ public class MessageCrud {
   public Message create(Message message) {
     message.setReceivedIn(LocalDateTime.now());
     Configuration configuration = configurationGateway.findByWorkerName(message.getWorker());
-    String code = configuration.getConfigs().getOrDefault("treatmentCode", "").replace("\r", " ");
+    String code = configuration.getConfigs().getOrDefault("treatmentCode", "TRUE").replace("\r", " ");
 
     ExtractorExecutionData executionData = new ExtractorExecutionData(message);
     executionData.setClassifyClient(classifyClient);
     SelParser parser = new SelParser(code, selContext, executionData);
-    parser.evaluate();
+    BooleanResult result = (BooleanResult) parser.evaluate();
 
-    return messageGateway.create(message);
+    if (result.getResult()) {
+      return messageGateway.create(message);
+    }
+    return null;
   }
 
   private List<Message> checkExistsInTrain(List<Message> messages) {
