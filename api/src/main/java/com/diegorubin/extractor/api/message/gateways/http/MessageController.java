@@ -24,6 +24,11 @@ public class MessageController {
     return messageCrud.findAll(worker);
   }
 
+  @RequestMapping(value = "untrained", method = RequestMethod.GET)
+  public List<Message> getUntrained() {
+    return messageCrud.findAllUntrained();
+  }
+
   @RequestMapping(method = RequestMethod.POST)
   public Message create(@RequestBody Message message) {
     return messageCrud.create(message);

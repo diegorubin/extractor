@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Message Crud Use Case
@@ -47,6 +48,12 @@ public class MessageCrud {
     messages = messageGateway.findAll();
 
     return checkExistsInTrain(messages);
+  }
+
+  public List<Message> findAllUntrained() {
+    List<Message> messages = messageGateway.findAll();
+    checkExistsInTrain(messages);
+    return messages.stream().filter(m -> !m.getInTrain()).collect(Collectors.toList());
   }
 
   public Message create(Message message) {
