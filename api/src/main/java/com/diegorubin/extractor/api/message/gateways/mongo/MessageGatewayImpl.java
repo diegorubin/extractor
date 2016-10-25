@@ -5,6 +5,7 @@ import com.diegorubin.extractor.api.message.gateways.MessageGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -19,8 +20,11 @@ public class MessageGatewayImpl implements MessageGateway {
   private MessageRepository messageRepository;
 
   @Override
-  public List<Message> findAll() {
-    return messageRepository.findAll();
+  public List<Message> findAll(LocalDate date) {
+    if (date == null) {
+      return messageRepository.findAll();
+    }
+    return messageRepository.findByDate("2016-10-24");
   }
 
   @Override

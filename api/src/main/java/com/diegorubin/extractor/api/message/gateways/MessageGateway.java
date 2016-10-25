@@ -2,6 +2,7 @@ package com.diegorubin.extractor.api.message.gateways;
 
 import com.diegorubin.extractor.api.message.domain.Message;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public interface MessageGateway {
    *
    * @return list of messages
    */
-  List<Message> findAll();
+  List<Message> findAll(LocalDate date);
 
   /**
    * List all messages by worker

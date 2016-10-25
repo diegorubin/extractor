@@ -13,6 +13,7 @@ import lang.sel.core.SelParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -44,18 +45,18 @@ public class MessageCrud {
   @Autowired
   private ClassifyClient classifyClient;
 
-  public List<Message> findAll(String worker) {
+  public List<Message> findAll(String worker, LocalDate date) {
     List<Message> messages;
     if (Optional.ofNullable(worker).isPresent()) {
       messages = messageGateway.findByWorker(worker);
     }
-    messages = messageGateway.findAll();
+    messages = messageGateway.findAll(date);
 
     return checkExistsInTrain(messages);
   }
 
   public List<Message> findAllUntrained() {
-    List<Message> messages = messageGateway.findAll();
+    List<Message> messages = messageGateway.findAll(null);
     checkExistsInTrain(messages);
     return messages.stream().filter(m -> !m.getInTrain()).collect(Collectors.toList());
   }
