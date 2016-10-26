@@ -27,7 +27,7 @@ public class MessageController {
                                    @RequestParam(value = "day", required = false) String date) {
     LocalDate localDate = null;
     if (date != null) {
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       localDate = LocalDate.parse(date, formatter);
     }
     return messageCrud.findAll(worker, localDate);

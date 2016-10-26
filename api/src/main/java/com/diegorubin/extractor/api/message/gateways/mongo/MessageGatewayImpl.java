@@ -24,7 +24,7 @@ public class MessageGatewayImpl implements MessageGateway {
     if (date == null) {
       return messageRepository.findAll();
     }
-    return messageRepository.findByDate("2016-10-24");
+    return messageRepository.findByDate(date.atStartOfDay(), date.plusDays(1).atStartOfDay());
   }
 
   @Override
