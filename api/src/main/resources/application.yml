@@ -14,6 +14,11 @@ spring:
       database: monitor
       host: localhost
       port: 27017
+  rabbitmq:
+   addresses: localhost:5672
+   adminAddresses: http://localhost:15672
+   username: guest
+   password: guest
 ribbon:
   eureka:
     enabled: false
