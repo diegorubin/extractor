@@ -102,4 +102,8 @@ public class Message {
     categories.put(category, value);
   }
 
+  @Override
+  public String toString() {
+    return "author=" + author + " message=" + content;
+  }
 }
