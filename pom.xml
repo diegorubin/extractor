@@ -22,7 +22,6 @@
     <module>worker</module>
     <module>api</module>
     <module>eureka</module>
-    <module>zuul</module>
   </modules>
 
   <properties>
